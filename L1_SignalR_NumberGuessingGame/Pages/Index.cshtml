@@ -1,0 +1,232 @@
+﻿@page
+@using L1_SignalR_NumberGuessingGame.Hubs
+@model IndexModel
+@{
+    ViewData["Title"] = "LR1_GAME";
+}
+
+
+<div class="container mt-5">
+
+    <div id="lobby" class="container mt-5">
+        <h1 class="text-center mb-4">Search for a game</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <input id="nickname" class="form-control form-control-sm p-2" placeholder="Enter your name to search for a game">
+            </div>
+            <div class="col-md-2 text-md-right">
+                <button id="btnSearch" class="btn btn-secondary btn-block">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game" class="mt-1" style="display: none;">
+        <h1 id="lobbyTitle" class="text-center"></h1>
+        <div id="info" class="text-center"></div>
+
+        <div class="mt-4 text-center">
+            <input id="guessInput" type="number" placeholder="Guess the number" class="form-control d-inline-block w-auto"/>
+            <button id="btnGuess" class="btn btn-primary ml-2">Submit Guess</button>
+        </div>
+
+        <div class="row m-4 justify-content-around mt-4">
+            <div class="col-md-4">
+                <h5>Total players: <span id="totalPlayers">0</span></h5>
+                <h6>Game Log</h6>
+                <ul id="messages" class="list-group overflow-auto" style="max-height: 300px;"></ul>
+            </div>
+
+            <div class="col-md-4">
+                <h6>Moves left</h6>
+                <ul id="players" class="list-group overflow-auto" style="max-height: 300px;"></ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.10/signalr.min.js"></script>
+
+<script type="text/javascript">
+    "use strict";
+
+    let gameObj = {
+
+        self: this,
+
+        elements: {
+            $nameInput: $("#nickname"),
+            $joinBtn: $("#btnSearch"),
+            $guessInput: $("#guessInput"),
+            $messages: $("#messages"),
+            $totalPlayers: $("#totalPlayers"),
+            $game: $("#game"),
+            $lobby: $("#lobby"),
+            $btnGuess: $("#btnGuess"),
+            $lobbyTitle: $("#lobbyTitle"),
+            $players: $("#players"),
+        },
+
+
+        connection: null,
+
+        init() {
+            this.bindEvents();
+            this.initHub();
+
+            this.elements.$game.fadeOut();
+            this.elements.$lobby.fadeIn();
+        },
+
+        bindEvents() {
+            console.log("Binding events");
+
+            this.elements.$joinBtn.on("click", () => this.joinGame());
+            this.elements.$btnGuess.on("click", () => this.makeGuess());
+        },
+
+        get signalHandlers() {
+            return [
+                {
+                    event: "@EventName.ValidationFailure", handler: (message) => {
+                        alert(message);
+                    }
+                },
+                {event: "@EventName.PlayerJoined", handler: (playerName, totalPlayers, attemptsLeft) => this.onPlayerJoined(playerName, totalPlayers, attemptsLeft)},
+                {event: "@EventName.PlayerDisconnected", handler: (playerName, totalPlayers) => this.onPlayerDisconnected(playerName, totalPlayers)},
+                {event: "@EventName.NewGameStarted", handler: (msg) => this.onGameStarted(msg)},
+                {event: "@EventName.GameEnded", handler: (message) => this.onGameEnded(message)},
+                {event: "@EventName.OnGuess", handler: (playerName, attemptedNumber, isTooHigh, movesLeft) => this.onGuess(playerName, attemptedNumber, isTooHigh, movesLeft)},
+                {
+                    event: "@EventName.GetOtherPlayers", handler: (others) => {
+                        if (others && others.length > 0) {
+                            others.forEach(other => this.updatePlayerMoves(other.Name, other.AttemptsLeft));
+                        }
+                    }
+                }
+            ];
+        },
+
+        initHub() {
+            console.log("Binding hub");
+
+            this.connection = new signalR.HubConnectionBuilder().withUrl("/numberGameHub").build();
+
+            this.signalHandlers.forEach(sh => {
+                this.connection.on(sh.event, sh.handler);
+            });
+
+            this.connection.start()
+                .then(() => console.log("SignalR connected"))
+                .catch(err => console.error(err.toString()));
+        },
+
+        joinGame() {
+            let playerName = this.elements.$nameInput.val();
+            if (playerName.length < 3) {
+                alert("Name must be at least 3 characters");
+                return;
+            }
+
+            this.elements.$game.fadeIn();
+            this.elements.$lobby.fadeOut();
+
+            this.elements.$messages.empty();
+
+            this.connection.invoke("@EventName.JoinGame", playerName);
+        },
+
+        onPlayerJoined(playerName, totalPlayers, attemptsLeft) {
+            this.elements.$totalPlayers.text(totalPlayers);
+            this.log(`${playerName} joined the game!`);
+
+
+            this.updatePlayerMoves(playerName, attemptsLeft);
+            this.connection.invoke("@EventName.GetOtherPlayers");
+
+        },
+
+        onPlayerDisconnected(playerName, totalPlayers) {
+            this.elements.$totalPlayers.text(totalPlayers);
+            this.log(`${playerName} left the game!`);
+
+            this.elements.$players.find(`#${playerName}`).remove();
+        },
+
+        onGameStarted(message) {
+            this.elements.$lobbyTitle.text(message);
+        },
+
+        onGameEnded(message) {
+            this.log(message);
+
+            this.elements.$lobbyTitle.text("Start a new game");
+        },
+
+
+        makeGuess() {
+            let guess = parseInt(this.elements.$guessInput.val(), 10);
+            if (isNaN(guess)) {
+                alert("Enter a valid number");
+                return;
+            }
+
+            this.connection.invoke("MakeGuess", guess);
+        },
+
+        onGuess(playerName, attemptedNumber, isTooHigh, movesLeft) {
+
+            let status = "";
+            if (isTooHigh === true) {
+                status = ` <span class="text-danger">(too high)</span>`;
+            } else if (isTooHigh === false) {
+                status = ` <span class="text-info">(too low)</span>`;
+            }
+
+            this.log(`${playerName} tried number ${attemptedNumber}. ${isTooHigh ? 'Too high' : 'Too low'}`,
+                isTooHigh ? 'primary' : 'danger');
+
+            this.updatePlayerMoves(playerName, movesLeft);
+        },
+
+        log(text, color) {
+
+            let $container = this.elements.$messages;
+
+            $container.append(
+                $("<li>")
+                    .addClass("list-group-item")
+                    .addClass(`list-group-item-${color ?? 'info'}`)
+                    .text(text)
+            );
+
+            $container.animate({scrollTop: $container[0].scrollHeight}, 200);
+        },
+
+        updatePlayerMoves(playerName, movesLeft) {
+
+            if (!playerName || playerName.trim() === "") return;
+
+            let li = this.elements.$players.find(`#${playerName}`);
+
+            if (li.length === 0) {
+                this.elements.$players.append(
+                    $("<li>")
+                        .addClass("list-group-item d-flex justify-content-between align-items-center")
+                        .text(playerName)
+                        .prop("id", playerName)
+                        .append(
+                            $("<span>")
+                                .addClass("badge bg-primary rounded-pill")
+                                .text(movesLeft)
+                        )
+                );
+            } else {
+                li.find(".badge").text(movesLeft);
+            }
+        }
+    };
+
+    $(document).ready(() => gameObj.init());
+</script>
