@@ -43,3 +43,4 @@ Release/
 
 # Keep everything else (source files)
 # *.cs, *.razor, *.csproj, *.json, *.css, *.html, *.md, *.png etc.
+/.vs
