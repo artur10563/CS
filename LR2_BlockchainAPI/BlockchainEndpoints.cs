@@ -13,7 +13,7 @@ public static class BlockchainEndpoints
             return Results.Ok(new { chain, length = chain.Count });
         });
 
-        app.MapPost("/transactions/new", (BlockchainPrototype blockchain,
+        app.MapPost("/transactions", (BlockchainPrototype blockchain,
             CreateTransactionDTO transaction) =>
         {
             if (string.IsNullOrWhiteSpace(transaction.Sender) || string.IsNullOrWhiteSpace(transaction.Recipient))
@@ -36,6 +36,29 @@ public static class BlockchainEndpoints
                 message = "New block forged",
                 block = newBlock
             });
+        });
+
+        app.MapPost("/nodes", (BlockchainPrototype blockchain, string nodeAddress) =>
+        {
+            try
+            {
+                var node = BlockchainPrototype.Node.Create(nodeAddress);
+                blockchain.AddNode(node);
+                return Results.Created();
+            }
+            catch (Exception e)
+            {
+                return Results.BadRequest(e.Message);
+            }
+        });
+
+        app.MapPost("/chain/resolve", async (BlockchainPrototype blockchain) =>
+        {
+            var chainUpdated = await blockchain.ResolveConflictsAsync();
+            
+            var msg = chainUpdated ? "Chain resolved" : "Our chain is main";
+            
+            return Results.Ok(msg);
         });
 
         return app;
