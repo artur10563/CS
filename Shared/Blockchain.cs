@@ -6,7 +6,14 @@ namespace Shared;
 
 public class BlockchainPrototype
 {
-    public sealed record Transaction(string sender, string recipient, decimal amount);
+    public sealed record Transaction(string Sender, string Recipient, decimal Amount, long Timestamp)
+    {
+        public static Transaction Create(string sender, string recipient, decimal amount)
+        {
+            return new Transaction(sender, recipient, amount, DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
+        }
+    };
+    
 
     public sealed record Block(int Index, long Timestamp, IEnumerable<Transaction> Transactions, long Proof, string PreviousHash)
     {

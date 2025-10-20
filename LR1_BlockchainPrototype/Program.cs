@@ -67,10 +67,10 @@ class Program
         {
             Console.WriteLine($"\n=== Mining Block #{startIndex + i + 1} ===");
 
-            blockchain.AddTransaction(new BlockchainPrototype.Transaction(
-                sender: $"User{i}",
-                recipient: $"User{i + 1}",
-                amount: 10 + i
+            blockchain.AddTransaction(BlockchainPrototype.Transaction.Create(
+                $"User{i}",
+                $"User{i + 1}",
+                10 + i
             ));
 
             var proof = blockchain.ProofOfWork();
