@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC_Server";
+
+package greet;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);            // Single input single output
+  rpc StreamHello(HelloRequest) returns (stream HelloReply);   // Single input many outputs
+  rpc CollectHellos(stream HelloRequest) returns (HelloReply); // Many inputs single output
+  rpc CollectAndStreamHellos(stream HelloRequest) returns (stream HelloReply); // Many inputs many outputs simultaneously
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
