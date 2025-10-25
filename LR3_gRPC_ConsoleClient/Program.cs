@@ -83,6 +83,17 @@ class Program
     static async Task Main(string[] args)
     {
         // await RunExamplesAsync();
+        
+        using var channel = GrpcChannel.ForAddress(ServerUrl);
+        var client = new WeatherService.WeatherServiceClient(channel);
+
+        using var call = client.SubscribeToCity(new GetWeatherRequest { City = "Kyiv" });
+       
+        await foreach (var update in call.ResponseStream.ReadAllAsync())
+        {
+            Console.WriteLine($"[{update.Timestamp}] {update.City} — {update.Condition}, {update.Temperature}°C, Humidity: {update.Humidity}%");
+        }
+        
         Console.Read();
     }
 }

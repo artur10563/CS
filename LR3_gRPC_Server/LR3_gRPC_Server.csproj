@@ -4,10 +4,12 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>gRPC_Server</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <Protobuf Include="Protos\greet.proto" GrpcServices="Server"/>
+        <Protobuf Include="Protos\weather.proto" GrpcServices="Server"/>
     </ItemGroup>
 
     <ItemGroup>

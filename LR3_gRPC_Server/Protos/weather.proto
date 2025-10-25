@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPC_Server";
+
+package weather;
+
+service WeatherService {
+  rpc SubscribeToCity(GetWeatherRequest) returns (stream WeatherResponse);
+}
+
+message GetWeatherRequest {
+  string city = 1;
+}
+
+message WeatherResponse {
+  string city = 1;
+  double temperature = 2;
+  int32 humidity = 3;
+  string condition = 4;
+  string timestamp = 5;
+}
