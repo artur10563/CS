@@ -46,3 +46,4 @@ Release/
 /.vs
 /LR2_Blazor_SignalR_SharedNotes/wwwroot/bootstrap
 /LR6_ImageSimilarity/TestImages
+/LR4_gRPC_Chat_ClientJS/node_modules

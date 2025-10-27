@@ -1,0 +1,49 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LR4_gRPC_Server";
+
+package chat;
+
+// ---------- Messages ----------
+message Room {
+  int32 id = 1;
+  string name = 2;
+}
+
+message RoomCreatedResponse {
+  Room room = 1;
+}
+
+message JoinRoomRequest {
+  int32 room_id = 1;
+  string user_name = 2;
+}
+
+message LeaveRoomRequest {
+  int32 room_id = 1;
+  string user_name = 2;
+}
+
+message MessageRequest {
+  int32 room_id = 1;
+  string user_name = 2;
+  string message = 3;
+}
+
+message ChatMessage {
+  int32 room_id = 1;
+  string user_name = 2;
+  string message = 3;
+  string timestamp = 4;
+}
+
+message Empty {}
+
+// ---------- Service ----------
+
+service ChatService {
+  rpc CreateNewRoom (Room) returns (RoomCreatedResponse);
+  rpc JoinRoom (JoinRoomRequest) returns (stream ChatMessage);
+  rpc LeaveRoom (LeaveRoomRequest) returns (Empty);
+  rpc SendMessage (MessageRequest) returns (Empty);
+}
