@@ -1,0 +1,2532 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2025 2:01:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3LBTFSF"
+  DTS:CreatorName="DESKTOP-3LBTFSF\user"
+  DTS:DTSID="{5A7CF7C5-2F7C-4CED-AE5A-97E277A961C1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1058"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{871C60D1-988C-41B7-B292-A5306141DADE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_AdventureWorksDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A8044C43-C744-4956-BE70-23D6BFCBF601}"
+      DTS:ObjectName="DB_AdventureWorksDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Initial Catalog=AdventureWorksDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{A8044C43-C744-4956-BE70-23D6BFCBF601}Подключение к данным;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_LR4_Destination]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ff2cc782-2fcc-4dba-9f95-b501112475da}"
+      DTS:ObjectName="DB_LR4_Destination">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Initial Catalog=LR4_Destination;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{A8044C43-C744-4956-BE70-23D6BFCBF601}Подключение к данным;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{08192C6E-4DF5-44A9-9C27-4F43C4C1A7EA}"
+      DTS:ObjectName="Flat File Connection">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1251"
+          DTS:ConnectionString="F:\ASP.NET Projects\CS\LR4_IntegrationServicesProject_Dreamworks\SalesQuotaByYear_Export.xlsx">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesTerritoryKey"
+              DTS:DTSID="{71CCF340-CC7E-43E1-BECC-537151D891C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesTerritoryRegion"
+              DTS:DTSID="{BF817019-BA47-436F-8384-383D16EB2F87}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesAmountQuota"
+              DTS:DTSID="{7DFA7EB8-FC65-4720-8334-94CCC7E77C6C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{59E79E27-8A31-4F21-AECE-2AF0E17D288F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BD58C68B-DDFF-4ACD-97D2-A5875E5F61F7}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1251"
+          DTS:ConnectionString="F:\ASP.NET Projects\CS\LR4_IntegrationServicesProject_Dreamworks\Export.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesTerritoryKey"
+              DTS:DTSID="{974C53C5-9CBC-43AE-86B5-5BAC2C73F1F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesTerritoryRegion"
+              DTS:DTSID="{7A6DE176-B910-49F6-B002-E4942AA29C3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesAmountQuota"
+              DTS:DTSID="{798BD9F4-5803-42AE-9685-9A153722EEC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{EA969CB6-FD00-45A3-9F3B-EBC4331B2B1D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[{D22D5444-84E6-4E77-A430-73C2F995D14E\}]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D22D5444-84E6-4E77-A430-73C2F995D14E}"
+      DTS:ObjectName="{D22D5444-84E6-4E77-A430-73C2F995D14E}">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DB_to_DB_SalesQuotaByYear"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BC288BBA-7CBA-421E-86F4-F5E547784ECE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DB_to_DB_SalesQuotaByYear"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Inputs[Derived Column Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)(#{Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[DateKey]} / 10000)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(DateKey / 10000)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimEmployee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[ParentEmployeeKey]"
+                      dataType="i4"
+                      name="ParentEmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeNationalIDAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      name="EmployeeNationalIDAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[ParentEmployeeNationalIDAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      name="ParentEmployeeNationalIDAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      dataType="i4"
+                      name="SalesTerritoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                      dataType="bool"
+                      name="NameStyle" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="50"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="25"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmergencyContactName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmergencyContactName" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmergencyContactPhone]"
+                      dataType="wstr"
+                      length="25"
+                      name="EmergencyContactPhone" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[PayFrequency]"
+                      dataType="ui1"
+                      name="PayFrequency" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[BaseRate]"
+                      dataType="cy"
+                      name="BaseRate" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonFlag]"
+                      dataType="bool"
+                      name="SalesPersonFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      name="DepartmentName" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
+                      dataType="dbDate"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
+                      dataType="dbDate"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[EmployeePhoto]"
+                      dataType="image"
+                      name="EmployeePhoto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      name="EmployeeKey" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimSalesTerritory"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimSalesTerritory]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryRegion]"
+                      length="50"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      dataType="i4"
+                      name="SalesTerritoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryAlternateKey]"
+                      dataType="i4"
+                      name="SalesTerritoryAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryCountry]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryCountry" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryGroup]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryGroup" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryImage]"
+                      dataType="image"
+                      name="SalesTerritoryImage" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Export to DB_LR4_Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SalesQuotaByYear]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_LR4_Destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_LR4_Destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesTerritoryKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryKey]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].Columns[SalesTerritoryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesTerritoryRegion"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesTerritoryRegion]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryRegion]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmountQuota]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesAmountQuota]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Output].Columns[Year]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesTerritoryKey]"
+                      dataType="i4"
+                      name="SalesTerritoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmountQuota]"
+                      dataType="cy"
+                      name="SalesAmountQuota" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      codePage="1251"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FactSalesQuota"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactSalesQuota]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_AdventureWorksDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[SalesAmountQuota]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[SalesQuotaKey]"
+                      dataType="i4"
+                      name="SalesQuotaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      dataType="i2"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[CalendarQuarter]"
+                      dataType="ui1"
+                      name="CalendarQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[SalesAmountQuota]"
+                      dataType="cy"
+                      name="SalesAmountQuota" />
+                    <externalMetadataColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      name="EmployeeKey" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota" />
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="JoinedSalesTerritory"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesTerritoryKey]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesAmountQuota]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Right Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryKey]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Right Input].Columns[SalesTerritoryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesTerritoryRegion"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryRegion]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Right Input].Columns[SalesTerritoryRegion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[SalesAmountQuota]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output].Columns[DateKey]"
+                      name="DateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input].Columns[DateKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Sales_Employee_Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[EmployeeKey]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[SalesAmountQuota]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Right Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[EmployeeKey]" />
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Right Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[SalesTerritoryKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[EmployeeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Right Input].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[SalesAmountQuota]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[DateKey]"
+                      name="DateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input].Columns[DateKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sorted_DimEmployee"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Inputs[Sort Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[EmployeeKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Inputs[Sort Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[EmployeeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sorted_DimSalesTerritory"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Inputs[Sort Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Inputs[Sort Input].Columns[SalesTerritoryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesTerritoryRegion"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sorted_FactSalesQuota"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Inputs[Sort Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[EmployeeKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Inputs[Sort Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Inputs[Sort Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[DateKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[EmployeeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output].Columns[DateKey]"
+                      name="DateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output].Columns[DateKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sorted_Sales_Employee_Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[EmployeeKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesTerritoryKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesAmountQuota]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[DateKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[EmployeeKey]"
+                      name="EmployeeKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[EmployeeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[SalesAmountQuota]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output].Columns[DateKey]"
+                      name="DateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output].Columns[DateKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Derived Column Output]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Merge Join Output]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Merge Join Output1]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Derived Column.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output1]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\DimEmployee.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output2]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota.Outputs[Sort Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output1]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee.Outputs[Sort Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output2]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join.Outputs[Sort Output]" />
+            <path
+              refId="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output3]"
+              endId="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SalesQuotaByYear_SaveToExcel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{60E8D877-BA35-4ECD-A4FB-D3DD3560047B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SalesQuotaByYear_SaveToExcel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DB_SalesQuotaByYear"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SalesQuotaByYear]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_LR4_Destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_LR4_Destination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryRegion]"
+                      length="50"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesAmountQuota]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[Year]"
+                      codePage="1251"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      length="4"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryKey]"
+                      dataType="i4"
+                      name="SalesTerritoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[SalesAmountQuota]"
+                      dataType="cy"
+                      name="SalesAmountQuota" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      codePage="1251"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesTerritoryRegion]"
+                      name="SalesTerritoryRegion" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesAmountQuota]"
+                      dataType="cy"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[SalesAmountQuota]"
+                      name="SalesAmountQuota" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      codePage="1251"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1058"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesTerritoryKey]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]" />
+                    <inputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].Columns[SalesTerritoryRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesTerritoryRegion"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesTerritoryRegion]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesTerritoryRegion]" />
+                    <inputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].Columns[SalesAmountQuota]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmountQuota"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesAmountQuota]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[SalesAmountQuota]" />
+                    <inputColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].Columns[Year]"
+                      cachedCodepage="1251"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output].Columns[Year]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesTerritoryKey]"
+                      dataType="i4"
+                      name="SalesTerritoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesTerritoryRegion]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritoryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesAmountQuota]"
+                      dataType="cy"
+                      name="SalesAmountQuota" />
+                    <externalMetadataColumn
+                      refId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Year]"
+                      codePage="1251"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SalesQuotaByYear_SaveToExcel.Paths[OLE DB Source Output]"
+              endId="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение]"
+      DTS:CreationName=""
+      DTS:DTSID="{DBB7D906-2D43-42FB-96DA-1B73E495DD23}"
+      DTS:From="Package\DB_to_DB_SalesQuotaByYear"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение"
+      DTS:To="Package\SalesQuotaByYear_SaveToExcel" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="231,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear"
+          TopLeft="404,172" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\SalesQuotaByYear_SaveToExcel"
+          TopLeft="394,268" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение]"
+          TopLeft="517.75,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DB_to_DB_SalesQuotaByYear">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Sorted_FactSalesQuota"
+          TopLeft="192,100" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\DimEmployee"
+          TopLeft="460,14" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory"
+          TopLeft="564.818181818182,202.272727272727" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota"
+          TopLeft="212,14" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Sales_Employee_Join"
+          TopLeft="303,199" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination"
+          TopLeft="410,564" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Sorted_Sales_Employee_Join"
+          TopLeft="282,287" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\JoinedSalesTerritory"
+          TopLeft="437.454545454545,389.909090909091" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimSalesTerritory"
+          TopLeft="548.545454545455,286.909090909091" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Derived Column"
+          TopLeft="453.181818181818,483.363636363636" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DB_to_DB_SalesQuotaByYear\Sorted_DimEmployee"
+          TopLeft="435,100" />
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output3]"
+          TopLeft="651.545454545455,328.909090909091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.4242424242424,60.9999999999999"
+              Start="0,0"
+              End="-95.4242424242424,53.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.2775330396476" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.2775330396476"
+                    Point2="0,36.2775330396476"
+                    Point3="-4,36.2775330396476" />
+                  <mssgle:LineSegment
+                    End="-91.4242424242424,36.2775330396476" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.4242424242424,36.2775330396476"
+                    Point2="-95.4242424242424,36.2775330396476"
+                    Point3="-95.4242424242424,40.2775330396476" />
+                  <mssgle:LineSegment
+                    End="-95.4242424242424,53.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output2]"
+          TopLeft="395,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.787878787879,60.9090909090909"
+              Start="0,0"
+              End="103.787878787879,53.4090909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.2234681617941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.2234681617941"
+                    Point2="0,36.2234681617941"
+                    Point3="4,36.2234681617941" />
+                  <mssgle:LineSegment
+                    End="99.787878787879,36.2234681617941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.787878787879,36.2234681617941"
+                    Point2="103.787878787879,36.2234681617941"
+                    Point3="103.787878787879,40.2234681617941" />
+                  <mssgle:LineSegment
+                    End="103.787878787879,53.4090909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output1]"
+          TopLeft="528,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101,57"
+              Start="0,0"
+              End="-101,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9113924050633"
+                    Point2="0,33.9113924050633"
+                    Point3="-4,33.9113924050633" />
+                  <mssgle:LineSegment
+                    End="-97,33.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97,33.9113924050633"
+                    Point2="-101,33.9113924050633"
+                    Point3="-101,37.9113924050633" />
+                  <mssgle:LineSegment
+                    End="-101,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Sort Output]"
+          TopLeft="290,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,57"
+              Start="0,0"
+              End="77,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9113924050633"
+                    Point2="0,33.9113924050633"
+                    Point3="4,33.9113924050633" />
+                  <mssgle:LineSegment
+                    End="73,33.9113924050633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73,33.9113924050633"
+                    Point2="77,33.9113924050633"
+                    Point3="77,37.9113924050633" />
+                  <mssgle:LineSegment
+                    End="77,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output2]"
+          TopLeft="649.931818181818,244.272727272727">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.6363636363637"
+              Start="0,0"
+              End="0,35.1363636363637">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1363636363637" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output1]"
+          TopLeft="531,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[OLE DB Source Output]"
+          TopLeft="290.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Merge Join Output1]"
+          TopLeft="529.818181818182,431.909090909091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.4545454545455"
+              Start="0,0"
+              End="0,43.9545454545455">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.9545454545455" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Merge Join Output]"
+          TopLeft="396,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB_to_DB_SalesQuotaByYear.Paths[Derived Column Output]"
+          TopLeft="528.340909090909,525.363636363636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.636363636364"
+              Start="0,0"
+              End="0,31.136363636364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.136363636364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DB_to_DB_SalesQuotaByYear\DimEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DB_to_DB_SalesQuotaByYear\DimSalesTerritory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DB_to_DB_SalesQuotaByYear\FactSalesQuota">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DB_to_DB_SalesQuotaByYear\Export to DB_LR4_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SalesQuotaByYear_SaveToExcel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear"
+          TopLeft="388,117" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SalesQuotaByYear_SaveToExcel\Flat File Destination"
+          TopLeft="398,198" />
+        <EdgeLayout
+          Id="Package\SalesQuotaByYear_SaveToExcel.Paths[OLE DB Source Output]"
+          TopLeft="485.5,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SalesQuotaByYear_SaveToExcel\DB_SalesQuotaByYear">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
