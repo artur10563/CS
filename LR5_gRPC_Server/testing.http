@@ -1,0 +1,26 @@
+﻿@host = localhost
+@port = 7050
+
+
+### Get all books (paged)
+GET https://{{host}}:{{port}}/books?page=1&pageSize=10
+Content-Type: application/json
+
+###
+
+### Get books by name
+GET https://{{host}}:{{port}}/books/Doe
+Content-Type: application/json
+
+###
+
+### Add a new book
+POST https://{{host}}:{{port}}/books
+Content-Type: application/json
+
+{
+  "name": "New Book2",
+  "authorName": "John Doe3"
+}
+
+###

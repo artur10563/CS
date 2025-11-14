@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+package library;
+
+option csharp_namespace = "Library.GrpcClient";
+
+message Book {
+  int32 id = 1;
+  string name = 2;
+  string authorName = 3;
+}
+
+message GetBookRequest {
+  string name = 1;
+}
+
+message GetBookResponse {
+  repeated Book Books = 1;
+}
+
+message GetBooksRequest {
+  int32 page = 1;
+  int32 pageSize = 2;
+}
+
+message AddBookRequest {
+  string name = 1;
+  string authorName = 2;
+}
+
+message AddBookResponse {
+  int32 id = 1;
+}
+
+service LibraryService {
+  rpc GetBooks(GetBooksRequest) returns (GetBookResponse);
+
+  rpc GetBook(GetBookRequest) returns (GetBookResponse);
+
+  rpc AddBook(AddBookRequest) returns (AddBookResponse);
+}
