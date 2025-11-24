@@ -1,7 +1,7 @@
 ﻿using LR6_GraphQL_ProductCatalog.Api.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace LR6_GraphQL_ProductCatalog.Api.Infrastructure
+namespace Data.Infrastructure
 {
     public class AppDbContext : DbContext
     {

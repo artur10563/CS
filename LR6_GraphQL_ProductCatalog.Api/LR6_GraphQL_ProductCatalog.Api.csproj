@@ -12,10 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.11" />
-    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.11" />
-    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.11" />
-    <PackageReference Include="HotChocolate.Types.Analyzers" Version="15.1.11">
+    <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.10" />
+    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.10" />
+    <PackageReference Include="HotChocolate.Data" Version="15.1.10" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.10" />
+    <PackageReference Include="HotChocolate.Types.Analyzers" Version="15.1.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -25,11 +26,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="GraphQL\Mutations\" />
-    <Folder Include="GraphQL\Inputs\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
   </ItemGroup>
 
 </Project>
