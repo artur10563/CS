@@ -2,6 +2,7 @@
 using GreenDonut.Data;
 using LR6_GraphQL_ProductCatalog.Api.Domain;
 using Microsoft.EntityFrameworkCore;
+using TranslationsEntity = LR6_GraphQL_ProductCatalog.Api.Domain.Translations;
 
 namespace LR6_Api.Products.DataLoaders;
 
@@ -22,7 +23,7 @@ public static class ProductDataLoaders
     }
 
     [DataLoader]
-    public static async Task<IReadOnlyDictionary<int, Translations[]>> TranslationByProductIdAsync(
+    public static async Task<IReadOnlyDictionary<int, TranslationsEntity[]>> TranslationByProductIdAsync(
         IReadOnlyList<int> productIds,
         AppDbContext dbContext,
         ISelectorBuilder selector,

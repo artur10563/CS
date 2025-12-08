@@ -7,29 +7,36 @@ using LR6_Api.Products.DataLoaders;
 
 namespace LR6_Api.Products;
 
-# region Node required for code generation
+// # region Node required for code generation
 
-[Node]
-public class PingNode
-{
-    public int Id { get; set; }
-}
+// [Node]
+// public class PingNode
+// {
+//     public int Id { get; set; }
+// }
 
-[QueryType]
-public static class DummyNodeQueries
-{
-    [NodeResolver]
-    public static PingNode PingNode(PingNode pingNode)
-    {
-        return pingNode;
-    }
-}
+// [QueryType]
+// public static class DummyNodeQueries
+// {
+//     [NodeResolver]
+//     public static PingNode PingNode(PingNode pingNode)
+//     {
+//         return pingNode;
+//     }
+// }
 
-#endregion
+// #endregion
 
 [QueryType]
 public static class ProductQueries
 {
+    [UsePaging]
+    public static async Task<IQueryable<Product>> GetProducts(AppDbContext dbContext)
+    {
+        return dbContext.Products.AsNoTracking().OrderBy(x => x.Name).ThenBy(x => x.Id);
+    }
+
+    [NodeResolver]
     public static async Task<Product?> GetProductByIdAsync(
         int id,
         IProductByIdDataLoader productById,
@@ -39,12 +46,12 @@ public static class ProductQueries
         return await productById.Select(selection).LoadAsync(id, cancellationToken);
     }
 
-    public static async Task<IEnumerable<Product>> GetProductsByIdAsync(
-        int[] ids,
+    public static async Task<IEnumerable<Product?>> GetProductsByIdAsync(
+        [ID<Product>] int[] ids,
         IProductByIdDataLoader productById,
         ISelection selection,
         CancellationToken cancellationToken)
     {
-        return await productById.Select(selection).LoadRequiredAsync(ids, cancellationToken);
+        return await productById.Select(selection).LoadAsync(ids, cancellationToken);
     }
 }
