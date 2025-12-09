@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>gRPC-Web Example</title>
-        <script src="./dist/main.js"></script>
-    </head>
-    <body>
-        <p>Open up the developer console and see the logs for the output.</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gRPC-Web Chat Client</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="./scripts.js"></script>
+</head>
+<body>
+    <h1>gRPC-Web Chat</h1>
+    <div class="panel">
+        <div class="grid two">
+            <div>
+                <label for="baseUrl">Server base URL</label>
+                <input id="baseUrl" type="text" value="http://localhost:5250" placeholder="http://localhost:5250">
+            </div>
+            <div>
+                <label for="userName">User name</label>
+                <input id="userName" type="text" placeholder="alice">
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3>Create room</h3>
+        <div class="grid two">
+            <div>
+                <label for="roomName">Room name</label>
+                <input id="roomName" type="text" placeholder="General">
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+                <button id="createRoomBtn" type="button">Create</button>
+            </div>
+        </div>
+        <p class="small">Server responds with a new room id.</p>
+    </div>
+
+    <div class="panel">
+        <h3>Join room</h3>
+        <div class="grid two">
+            <div>
+                <label for="roomId">Room id</label>
+                <input id="roomId" type="number" placeholder="1" min="1">
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-end;">
+                <button id="joinBtn" type="button">Join</button>
+                <button id="leaveBtn" type="button" class="secondary">Leave</button>
+            </div>
+        </div>
+        <p id="status">Not connected</p>
+    </div>
+
+    <div class="panel">
+        <h3>Send message</h3>
+        <div class="grid two">
+            <div>
+                <label for="messageInput">Message</label>
+                <input id="messageInput" type="text" placeholder="Hello everyone!">
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+                <button id="sendBtn" type="button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3>Messages</h3>
+        <ul id="messages"></ul>
+    </div>
+</body>
 </html>

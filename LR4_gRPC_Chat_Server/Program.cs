@@ -14,6 +14,7 @@ public class Program
         builder.Services.AddGrpc();
 
         // CORS to allow gRPC requests from any origin
+        // dotnet dev-certs https --trust
         builder.Services.AddCors(o => o.AddPolicy("AllowAll", policyBuilder =>
         {
             policyBuilder.AllowAnyOrigin()
