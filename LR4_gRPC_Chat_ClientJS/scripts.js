@@ -72,11 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
     els.sendBtn = document.getElementById("sendBtn");
     els.status = document.getElementById("status");
     els.messages = document.getElementById("messages");
+    els.urlBtn = document.getElementById("urlBtn");
 
     els.createRoomBtn.addEventListener("click", handleCreateRoom);
     els.joinBtn.addEventListener("click", handleJoin);
     els.leaveBtn.addEventListener("click", handleLeave);
     els.sendBtn.addEventListener("click", handleSend);
+    els.urlBtn.addEventListener("click", handleSaveUrl);
 
     buildClient();
 });
@@ -192,6 +194,10 @@ async function handleSend() {
     } catch (err) {
         reportError("Send failed", err);
     }
+}
+
+function handleSaveUrl() {
+    buildClient();
 }
 
 async function stopStreaming() {

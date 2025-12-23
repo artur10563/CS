@@ -13,7 +13,11 @@
         <div class="grid two">
             <div>
                 <label for="baseUrl">Server base URL</label>
-                <input id="baseUrl" type="text" value="http://localhost:5250" placeholder="http://localhost:5250">
+                <div style="display:flex;gap:8px;align-items:flex-end; padding-bottom: 8px;">
+                    <input id="baseUrl" type="text" value="http://localhost:5250" placeholder="http://localhost:5250">
+                    <button id="urlBtn" type="button">Save</button>
+                </div>
+            </div>
             </div>
             <div>
                 <label for="userName">User name</label>

@@ -1,0 +1,18 @@
+﻿version: "3.9"
+
+services:
+  grpc-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  web-client:
+    build:
+      context: ../LR4_gRPC_Chat_ClientJS
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    depends_on:
+      - grpc-server
