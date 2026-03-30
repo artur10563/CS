@@ -49,3 +49,4 @@ Release/
 /LR4_gRPC_Chat_ClientJS/node_modules
 Python_ML_Labs/checkpoint.pth
 /Python_ML_Labs/MIAT/lab2/lab2_ConsoleApp/.vs
+*.7z
